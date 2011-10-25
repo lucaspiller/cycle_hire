@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+$: << File.expand_path(File.join(File.dirname(__FILE__), '../lib'))
+
+require 'cycle_hire'
+
+unless ARGV.size == 2
+  abort "Usage: #{$0} username password"
+end
+
+cycle_hire = CycleHire::API.new
+cycle_hire.authenticate ARGV[0], ARGV[1]
+puts cycle_hire.history.to_yaml
