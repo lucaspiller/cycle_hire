@@ -36,17 +36,18 @@ class CycleHire::API
   def make_request(method, path, options = {})
     options[:headers] ||= {}
     options[:headers]['Cookie'] = @cookies if @cookies
-
     response = self.class.send(method, path, options)
-    @cookies = get_cookies_from_response(response)
+    set_cookies_from_response(response)
     response
   end
 
-  def get_cookies_from_response(httparty_response)
+  def set_cookies_from_response(httparty_response)
     # TODO there must be a better way to do this
-    cookies_array = httparty_response.response.to_hash['set-cookie'] || []
-    cookies_array.map do |cookie|
-      cookie.split(';').first
-    end.join('; ')
+    headers = httparty_response.response.to_hash
+    if headers['set-cookie']
+      @cookies = headers['set-cookie'].map do |cookie|
+        cookie.split(';').first
+      end.join('; ')
+    end
   end
 end
