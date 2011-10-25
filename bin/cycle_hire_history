@@ -8,6 +8,6 @@ unless ARGV.size == 2
   abort "Usage: #{$0} username password"
 end
 
-cycle_hire = CycleHire::API.new
-cycle_hire.authenticate ARGV[0], ARGV[1]
-puts cycle_hire.history.to_yaml
+session = CycleHire::Session.new ARGV[0], ARGV[1]
+session.authenticate!
+puts session.history.to_yaml

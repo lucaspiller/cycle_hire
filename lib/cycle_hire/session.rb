@@ -1,12 +1,17 @@
 require 'httparty'
 require 'nokogiri'
 
-class CycleHire::API
+class CycleHire::Session
   include HTTParty
 
   base_uri 'https://web.barclayscyclehire.tfl.gov.uk/'
 
-  def authenticate(username, password)
+  def initialize(username, password)
+    @username = username
+    @password = password
+  end
+
+  def authenticate!
     # initial request to get csrf
     csrf_response = make_request(:get, '/')
     doc = Nokogiri::HTML(csrf_response.body)
@@ -15,8 +20,8 @@ class CycleHire::API
     # authentication request
     options = {
       :query => {
-        'login[Email]' => username,
-        'login[Password]' => password,
+        'login[Email]' => @username,
+        'login[Password]' => @password,
         'login[_csrf_token]' => csrf
       },
       :headers => {
