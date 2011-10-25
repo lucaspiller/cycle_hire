@@ -28,6 +28,12 @@ class CycleHire::API
     true
   end
 
+  def history
+    response = make_request(:get, '/account/activity')
+    parser = CycleHire::HistoryParser.new
+    parser.parse(response.body)
+  end
+
   class AuthenticationError < Exception
   end
 
