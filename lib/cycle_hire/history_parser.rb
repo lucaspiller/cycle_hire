@@ -45,7 +45,7 @@ class CycleHire::HistoryParser
   # method strips, as such dates come in as "11 Oct 201109:15"
   def parse_time(string)
     if string =~ /(.*)([0-9]{2}:[0-9]{2})/
-      Time.parse($1 + " " + $2 + " BST")
+      Time.parse($1 + " " + $2 + " London")
     end
   end
 
