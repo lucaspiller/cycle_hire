@@ -1,0 +1,17 @@
+$LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
+
+Gem::Specification.new do |s|
+  s.name              = "cycle-hire"
+  s.version           = "0.1"
+  s.date              = Time.now.strftime('%Y-%m-%d')
+  s.summary           = "cycle-hire'
+  s.homepage          = "http://github.com/lucaspiller/cycle-hire"
+  s.email             = "luca@stackednotion.com"
+  s.authors           = [ "Luca Spiller" ]
+
+  s.files             = %w( README.md )
+  s.files            += Dir.glob("lib/**/*")
+  s.files            += Dir.glob("bin/**/*")
+
+  s.executables       = %w( cycle_hire_history )
+end
