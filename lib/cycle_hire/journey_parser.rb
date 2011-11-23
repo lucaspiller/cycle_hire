@@ -15,9 +15,11 @@ class CycleHire::JourneyParser
       # ignore the header and other column types
       if columns[4] == 'Hire'
         start_time = parse_time(columns[0])
+        start_station = CycleHire::Station.new(columns[2])
         end_time = parse_time(columns[1])
+        end_station = CycleHire::Station.new(columns[3])
         cost = parse_cost(columns[5])
-        CycleHire::Journey.new(start_time, columns[2], end_time, columns[3], cost)
+        CycleHire::Journey.new(start_time, start_station, end_time, end_station, cost)
       else
         nil
       end

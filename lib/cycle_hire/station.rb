@@ -1,11 +1,7 @@
 class CycleHire::Station
   attr_reader :name, :area, :id, :latitude, :longitude, :bikes, :empty_docks, :installed, :locked, :temporary, :timestamp
 
-  def initialize(name)
-    parse_name!(name)
-  end
-
-  def initialize(name, id, latitude, longitude, bikes, empty_docks, installed, locked, temporary, timestamp)
+  def initialize(name, id = nil, latitude = nil, longitude = nil, bikes = nil, empty_docks = nil, installed = nil, locked = nil, temporary = nil, timestamp = nil)
     parse_name!(name)
     @id = id
     @latitude = latitude
@@ -34,6 +30,10 @@ class CycleHire::Station
       :temporary => @temporary,
       :timestamp => @timestamp
     }
+  end
+
+  def to_s
+    @name + ', ' + @area
   end
 
   protected
