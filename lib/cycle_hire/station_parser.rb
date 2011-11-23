@@ -1,6 +1,15 @@
+require 'open-uri'
+
 class CycleHire::StationParser
   STATION_REGEX = /\{id:"(\d+)".+?name:"(.+?)".+?lat:"(.+?)".+?long:"(.+?)".+?nbBikes:"(\d+)".+?nbEmptyDocks:"(\d+)".+?installed:"(.+?)".+?locked:"(.+?)".+?temporary:"(.+?)"\}/
   TIME_REGEX = /var hour='(\d\d:\d\d)'/
+  ENDPOINT = "https://web.barclayscyclehire.tfl.gov.uk/maps"
+
+  def self.get_stations
+    data = open(ENDPOINT).read
+    parser = self.new data
+    parser.parse
+  end
 
   def initialize(data)
     @data = data

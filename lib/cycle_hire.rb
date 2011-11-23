@@ -1,8 +1,5 @@
-require 'open-uri'
-
 module CycleHire
   ROOT = File.expand_path(File.dirname(__FILE__))
-  STATION_ENDPOINT = "https://web.barclayscyclehire.tfl.gov.uk/maps"
 
   autoload :Session, "#{ROOT}/cycle_hire/session"
   autoload :JourneyParser, "#{ROOT}/cycle_hire/journey_parser"
@@ -17,8 +14,6 @@ module CycleHire
   end
 
   def self.stations
-    data = open(STATION_ENDPOINT).read
-    parser = StationParser.new data
-    parser.parse
+    StationParser.get_stations
   end
 end
