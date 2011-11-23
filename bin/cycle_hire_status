@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+$: << File.expand_path(File.join(File.dirname(__FILE__), '../lib'))
+
+require 'cycle_hire'
+require 'yaml'
+
+unless ARGV.size == 1
+  abort "Usage: #{$0} station_regex"
+end
+
+stations = CycleHire.stations
+stations.each do |station|
+  if station[:name] =~ /#{ARGV[0]}/i
+    puts station.to_yaml
+  end
+end
