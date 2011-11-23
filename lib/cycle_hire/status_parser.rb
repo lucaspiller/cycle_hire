@@ -1,5 +1,6 @@
 class CycleHire::StatusParser
   STATION_REGEX = /\{id:"(\d+)".+?name:"(.+?)".+?lat:"(.+?)".+?long:"(.+?)".+?nbBikes:"(\d+)".+?nbEmptyDocks:"(\d+)".+?installed:"(.+?)".+?locked:"(.+?)".+?temporary:"(.+?)"\}/
+  TIME_REGEX = /var hour='(\d\d:\d\d)'/
 
   def initialize(data)
     @data = data
@@ -9,6 +10,10 @@ class CycleHire::StatusParser
     @data.scan(STATION_REGEX).map do |station|
       parse_station(station)
     end
+  end
+
+  def timestamp
+    @timestamp ||= Time.parse(TIME_REGEX.match(@data).to_s)
   end
 
   protected
@@ -24,7 +29,8 @@ class CycleHire::StatusParser
       :empty_docks => st[5].to_i,
       :installed => (st[6] == 'true'),
       :locked => (st[7] == 'true'),
-      :temporary => (st[8] == 'true')
+      :temporary => (st[8] == 'true'),
+      :timestamp => timestamp
     }
   end
 end
