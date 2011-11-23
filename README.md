@@ -18,11 +18,11 @@ Bundler installs:
 
 ## Installation
 
-    gem install cycle-hire
+    gem install cycle_hire
 
 Or, add this to your Gemfile:
 
-    gem 'cycle-hire'
+    gem 'cycle_hire'
 
 ## Usage (binaries)
 
