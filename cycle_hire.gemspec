@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name              = "cycle_hire"
-  s.version           = "1.0.2"
+  s.version           = "1.0.3"
   s.date              = Time.now.strftime('%Y-%m-%d')
   s.summary           = "A Ruby API for the Barclays Cycle Hire scheme in London"
   s.homepage          = "https://github.com/lucaspiller/cycle_hire"
