@@ -15,8 +15,8 @@ module CycleHire
   end
 
   def self.stations
-    body = open("https://web.barclayscyclehire.tfl.gov.uk/maps").read
-    parser = StatusParser.new
-    parser.parse(body)
+    data = open("https://web.barclayscyclehire.tfl.gov.uk/maps").read
+    parser = StatusParser.new data
+    parser.parse
   end
 end

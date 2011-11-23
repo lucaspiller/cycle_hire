@@ -1,8 +1,12 @@
 class CycleHire::StatusParser
   STATION_REGEX = /\{id:"(\d+)".+?name:"(.+?)".+?lat:"(.+?)".+?long:"(.+?)".+?nbBikes:"(\d+)".+?nbEmptyDocks:"(\d+)".+?installed:"(.+?)".+?locked:"(.+?)".+?temporary:"(.+?)"\}/
 
-  def parse(body)
-    body.scan(STATION_REGEX).map do |station|
+  def initialize(data)
+    @data = data
+  end
+
+  def parse
+    @data.scan(STATION_REGEX).map do |station|
       parse_station(station)
     end
   end
