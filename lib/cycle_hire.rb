@@ -1,5 +1,6 @@
 module CycleHire
   ROOT = File.expand_path(File.dirname(__FILE__))
+  VERSION = '1.0.0'
 
   autoload :Session, "#{ROOT}/cycle_hire/session"
   autoload :JourneyParser, "#{ROOT}/cycle_hire/journey_parser"
