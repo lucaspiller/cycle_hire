@@ -3,8 +3,12 @@
 require 'nokogiri'
 
 class CycleHire::JourneyParser
-  def parse(body)
-    rows = rows_from_body(body)
+  def initialize(data)
+    @data = data
+  end
+
+  def parse
+    rows = rows_from_data(@data)
     rows.collect do |row|
       columns = column_data_for_row(row)
 
@@ -22,8 +26,8 @@ class CycleHire::JourneyParser
 
   protected
 
-  def rows_from_body(body)
-    doc = Nokogiri::HTML(body)
+  def rows_from_data(data)
+    doc = Nokogiri::HTML(data)
     rows = doc.xpath("//table[@summary='My Account - Activity log']/tbody/tr")
   end
 

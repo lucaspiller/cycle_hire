@@ -35,8 +35,8 @@ class CycleHire::Session
 
   def journeys
     response = make_request(:get, '/account/activity')
-    parser = CycleHire::JourneyParser.new
-    parser.parse(response.body)
+    parser = CycleHire::JourneyParser.new(response.body)
+    parser.parse
   end
 
   class AuthenticationError < Exception
