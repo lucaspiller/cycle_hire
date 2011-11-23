@@ -4,7 +4,7 @@ module CycleHire
   ROOT = File.expand_path(File.dirname(__FILE__))
 
   autoload :Session, "#{ROOT}/cycle_hire/session"
-  autoload :HistoryParser, "#{ROOT}/cycle_hire/history_parser"
+  autoload :JourneyParser, "#{ROOT}/cycle_hire/journey_parser"
   autoload :StatusParser, "#{ROOT}/cycle_hire/status_parser"
 
   # raises CycleHire::Session::AuthenticationError

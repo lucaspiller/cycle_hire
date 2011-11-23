@@ -33,9 +33,9 @@ class CycleHire::Session
     self
   end
 
-  def history
+  def journeys
     response = make_request(:get, '/account/activity')
-    parser = CycleHire::HistoryParser.new
+    parser = CycleHire::JourneyParser.new
     parser.parse(response.body)
   end
 

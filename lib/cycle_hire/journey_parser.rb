@@ -2,7 +2,7 @@
 
 require 'nokogiri'
 
-class CycleHire::HistoryParser
+class CycleHire::JourneyParser
   def parse(body)
     rows = rows_from_body(body)
     rows.collect do |row|

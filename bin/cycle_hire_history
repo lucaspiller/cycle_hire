@@ -10,7 +10,7 @@ end
 
 begin
   session = CycleHire.authenticate ARGV[0], ARGV[1]
-  puts session.history.to_yaml
+  puts session.journeys.to_yaml
 rescue CycleHire::Session::AuthenticationError
   abort "Invalid username and password"
 end
