@@ -5,6 +5,7 @@ module CycleHire
 
   autoload :Session, "#{ROOT}/cycle_hire/session"
   autoload :JourneyParser, "#{ROOT}/cycle_hire/journey_parser"
+  autoload :Journey, "#{ROOT}/cycle_hire/journey"
   autoload :StatusParser, "#{ROOT}/cycle_hire/status_parser"
 
   # raises CycleHire::Session::AuthenticationError

@@ -13,15 +13,7 @@ class CycleHire::JourneyParser
         start_time = parse_time(columns[0])
         end_time = parse_time(columns[1])
         cost = parse_cost(columns[5])
-        duration = ((end_time - start_time) / 60).to_i
-        {
-          :start_time => start_time,
-          :start_station => columns[2],
-          :end_time => end_time,
-          :end_station => columns[3],
-          :cost => cost,
-          :duration => duration
-        }
+        CycleHire::Journey.new(start_time, columns[2], end_time, columns[3], cost)
       else
         nil
       end
