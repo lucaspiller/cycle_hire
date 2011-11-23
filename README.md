@@ -16,6 +16,14 @@ Bundler installs:
 * Nokogiri
 * HTTParty
 
+## Installation
+
+    gem install cycle-hire
+
+Or, add this to your Gemfile:
+
+    gem 'cycle-hire'
+
 ## Usage (binaries)
 
 ### Fetch journey history
