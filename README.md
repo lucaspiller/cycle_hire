@@ -4,29 +4,52 @@ Cycle Hire is a Ruby API for the Barclays Cycle Hire scheme in London. It primar
 
 It provides access to the following data:
 
-* User cycle hire history
+* User journey history
+* Docking station status
 
 ## Requirements
 
-Ruby 1.9 and Bundler.
+Ruby 1.9 and Bundler. (It'll probably work on Ruby 1.8 but is untested)
 
 Bundler installs:
 
 * Nokogiri
 * HTTParty
 
-## Usage
+## Usage (binaries)
 
-### Fetch cycle hire history
+### Fetch journey history
 
     ./bin/cycle_hire_history <email> <password>
 
 Where the access credentials are your login to the cycle hire section of the TfL website. Outputs the data in YAML format.
 
+### Fetch docking station status
+
+    ./bin/cycle_hire_status <station>
+
+Where station is a regex of stations you want to match. Outputs the data in YAML format.
+
+## Usage (in your code)
+
+### Fetch journey history
+
+      session = CycleHire.authenticate email, password
+      # raises CycleHire::Session::AuthenticationError if
+      # the email or password and incorrect
+
+      journeys = session.journeys
+      # array of the users journeys
+
+### Fetch docking station status
+
+      stations = CycleHire.stations
+      # array of stations, see CycleHire::Station
+      # for more details
+
 ## Todo
 
 * Tests
-* Access to docking station status feed
 * Access to more user account data (e.g. balance, membership expiry)
 
 ## Contributing
