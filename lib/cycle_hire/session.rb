@@ -6,8 +6,8 @@ class CycleHire::Session
 
   base_uri 'https://web.barclayscyclehire.tfl.gov.uk/'
 
-  def initialize(username, password)
-    @username = username
+  def initialize(email, password)
+    @email = email
     @password = password
   end
 
@@ -20,7 +20,7 @@ class CycleHire::Session
     # authentication request
     options = {
       :query => {
-        'login[Email]' => @username,
+        'login[Email]' => @email,
         'login[Password]' => @password,
         'login[_csrf_token]' => csrf
       },

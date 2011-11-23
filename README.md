@@ -19,7 +19,7 @@ Bundler installs:
 
 ### Fetch cycle hire history
 
-    ./bin/cycle_hire_history <username> <password>
+    ./bin/cycle_hire_history <email> <password>
 
 Where the access credentials are your login to the cycle hire section of the TfL website. Outputs the data in YAML format.
 

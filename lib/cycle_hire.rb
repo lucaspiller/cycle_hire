@@ -10,8 +10,8 @@ module CycleHire
   autoload :Station, "#{ROOT}/cycle_hire/station"
 
   # raises CycleHire::Session::AuthenticationError
-  def self.authenticate(username, password)
-    session = Session.new username, password
+  def self.authenticate(email, password)
+    session = Session.new email, password
     session.authenticate!
   end
 
