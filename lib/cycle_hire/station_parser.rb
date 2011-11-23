@@ -1,4 +1,4 @@
-class CycleHire::StatusParser
+class CycleHire::StationParser
   STATION_REGEX = /\{id:"(\d+)".+?name:"(.+?)".+?lat:"(.+?)".+?long:"(.+?)".+?nbBikes:"(\d+)".+?nbEmptyDocks:"(\d+)".+?installed:"(.+?)".+?locked:"(.+?)".+?temporary:"(.+?)"\}/
   TIME_REGEX = /var hour='(\d\d:\d\d)'/
 
