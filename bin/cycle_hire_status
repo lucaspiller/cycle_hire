@@ -11,7 +11,7 @@ end
 
 stations = CycleHire.stations
 stations.each do |station|
-  if station[:name] =~ /#{ARGV[0]}/i
-    puts station.to_yaml
+  if station.name =~ /#{ARGV[0]}/i
+    puts station.to_h.to_yaml
   end
 end

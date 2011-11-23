@@ -19,18 +19,21 @@ class CycleHire::StationParser
   protected
 
   def parse_station(st)
-    {
-      :id => st[0],
-      :name => (st[1].split(',')[0] || '').strip,
-      :area => (st[1].split(',')[1] || '').strip,
-      :lat => st[2].to_f,
-      :long => st[3].to_f,
-      :bikes => st[4].to_i,
-      :empty_docks => st[5].to_i,
-      :installed => (st[6] == 'true'),
-      :locked => (st[7] == 'true'),
-      :temporary => (st[8] == 'true'),
-      :timestamp => timestamp
-    }
+    installed = (st[6] == 'true')
+    locked = (st[7] == 'true')
+    temporary = (st[8] == 'true')
+
+    CycleHire::Station.new(
+      st[1],
+      st[0],
+      st[2].to_f,
+      st[3].to_f,
+      st[4].to_i,
+      st[5].to_i,
+      installed,
+      locked,
+      temporary,
+      timestamp
+    )
   end
 end
