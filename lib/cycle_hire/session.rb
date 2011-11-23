@@ -30,7 +30,7 @@ class CycleHire::Session
     }
     authentication_response = make_request(:post, '/', options)
     raise AuthenticationError unless authentication_response.body =~ /Account Summary/
-    true
+    self
   end
 
   def history
